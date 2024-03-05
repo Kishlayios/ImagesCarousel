@@ -15,7 +15,7 @@ class HomeViewModel: NSObject {
     
     // MARK: - Variables
     weak var delegate: HomeListVMTrigger?
-    private let syncService = HomeRepository()
+    let syncService = HomeRepository()
     var pageCount = 1
     var arrImageList = [HomeDataListModel]()
     
@@ -32,13 +32,17 @@ class HomeViewModel: NSObject {
     
     
     func removeDuplicateElements(data: [HomeDataListModel]) -> [HomeDataListModel] {
-        var uniqueList = [HomeDataListModel]()
-        for item in data {
-            if !uniqueList.contains(where: {$0.author == item.author }) {
-                uniqueList.append(item)
+        if !data.isEmpty {
+            var uniqueList = [HomeDataListModel]()
+            for item in data {
+                if !uniqueList.contains(where: {$0.author == item.author }) {
+                    uniqueList.append(item)
+                }
             }
+            return uniqueList
+        } else {
+           return []
         }
-        return uniqueList
     }
     
     func setupTheModelWhenFetchFromLocal() {

@@ -18,7 +18,7 @@ struct ResponseData {
 }
 
 // MARK: - Home Data List Model
-struct HomeDataListModel: Codable {
+struct HomeDataListModel: Equatable,Codable {
     let id, author: String?
     let width, height: Int?
     let url, downloadURL: String?

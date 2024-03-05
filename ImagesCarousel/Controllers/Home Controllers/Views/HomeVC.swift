@@ -65,7 +65,11 @@ extension HomeVC: UITableViewDataSource {
         if section == 0 {
             return 1
         } else {
-            return homeViewModel?.arrImageList.count ?? 0
+            if !(homeViewModel?.arrImageList.isEmpty ?? false) {
+                return homeViewModel?.arrImageList[currentVisibleIndex].filteredChildList?.count ?? 0
+            } else {
+                return 0
+            }
         }
     }
     
@@ -77,14 +81,12 @@ extension HomeVC: UITableViewDataSource {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "DisplayImageInList", for: indexPath) as! DisplayImageInList
-            cell.setupData(data: homeViewModel?.arrImageList[currentVisibleIndex].childList?[indexPath.row])
+            cell.setupData(data: homeViewModel?.arrImageList[currentVisibleIndex].filteredChildList?[indexPath.row])
             return cell
         }
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//        let headerView = UIView.init(frame: CGRect.init(x: 0, y: 0, width: tableView.frame.width, height: 44))
-//        headerView.addSubview(searchBar)
         return searchBar
     }
     
@@ -95,7 +97,10 @@ extension HomeVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section > 0 {
-            //code
+            let data = self.homeViewModel?.arrImageList[currentVisibleIndex].filteredChildList?[indexPath.row]
+            guard let vc = StoryBoard.Main.instantiateViewController(withIdentifier: "DetailsVC") as? DetailsVC else {return}
+            vc.receivedAuthorData = data
+            self.navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -132,23 +137,30 @@ extension HomeVC: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        self.homeViewModel?.arrFilteredAuthorList = self.homeViewModel?.arrAuthorList ?? []
-//        if !searchText.isEmpty {
-//            self.homeViewModel?.arrFilteredAuthorList = (self.homeViewModel?.arrAuthorList ?? []).filter({($0.author?.lowercased() ?? "").contains(searchText.lowercased())})
-//        }
-//        reloadCollection()
+        self.homeViewModel?.arrImageList[currentVisibleIndex].revertData()
+        if !searchText.isEmpty {
+            self.homeViewModel?.arrImageList[currentVisibleIndex].filteredChildList = (self.homeViewModel?.arrImageList[currentVisibleIndex].childList ?? []).filter({($0.author?.lowercased() ?? "").contains(searchText.lowercased())})
+        }
+        reloadParticularSection()
     }
 }
 
 // MARK: - View Model Methods
 extension HomeVC: HomeListVMTrigger,ImagesCardViewTrigger {
-    func particularCardTapped(data: Any) {
-        //code
+    func particularCardVisible(currentIndex: Int) {
+        self.currentVisibleIndex = currentIndex
+        reloadParticularSection()
     }
     
     func reloadTableData() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
+        }
+    }
+    
+    func reloadParticularSection() {
+        DispatchQueue.main.async {
+            self.tableView.reloadSections(IndexSet(integer: 1), with: .none)
         }
     }
     

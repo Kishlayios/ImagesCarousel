@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ImagesCardViewTrigger: AnyObject {
-    func particularCardTapped(data: Any)
+    func particularCardVisible(currentIndex: Int)
 }
 
 class TableFirstSectionCell: UITableViewCell {
@@ -44,6 +44,7 @@ class TableFirstSectionCell: UITableViewCell {
     
     func reloadInnerSetup(data: [HomeDataListModel]) {
         self.arrImageList = data
+        self.pageControl.numberOfPages = self.arrImageList.count
         self.collectionView.reloadData()
     }
 
@@ -67,6 +68,7 @@ extension TableFirstSectionCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
             self.pageControl.currentPage = indexPath.item
             currentIndex = indexPath.item
+            self.delegate?.particularCardVisible(currentIndex: currentIndex)
         }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
@@ -90,7 +92,7 @@ extension TableFirstSectionCell: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = collectionView.frame.height
-        let width = (collectionView.frame.width - 16) / 1.33
+        let width = (collectionView.frame.width - 16) / 1.15
         return CGSize(width: width, height: height)
     }
 }

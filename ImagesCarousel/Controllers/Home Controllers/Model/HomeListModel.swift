@@ -17,7 +17,7 @@ struct ResponseData {
     }
 }
 
-
+// MARK: - Home Data List Model
 struct HomeDataListModel: Codable {
     let id, author: String?
     let width, height: Int?
@@ -30,16 +30,6 @@ struct HomeDataListModel: Codable {
         case downloadURL = "download_url"
     }
     
-//    init(id: String?, author: String?, width: Int?, height: Int?, url: String?, downloadURL: String?, childList: [HomeDataListModel]? = nil) {
-//        self.id = id
-//        self.author = author
-//        self.width = width
-//        self.height = height
-//        self.url = url
-//        self.downloadURL = downloadURL
-//        self.childList = childList
-//        self.filteredChildList = childList
-//    }
     
     mutating func addChildData(arrList: [HomeDataListModel]) {
         self.childList = arrList

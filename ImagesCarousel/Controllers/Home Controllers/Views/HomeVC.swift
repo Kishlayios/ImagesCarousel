@@ -23,7 +23,6 @@ class HomeVC: UIViewController {
         search.sizeToFit()
         return search
     }()
-    var isSearchBtnEnabled = false
     var currentVisibleIndex = 0
     
     // MARK: - View Life Cycle
@@ -130,10 +129,8 @@ extension HomeVC: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        //if self.isSearchBtnEnabled {
             self.searchBar.text = ""
             self.searchBar.resignFirstResponder()
-        //}
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -166,8 +163,6 @@ extension HomeVC: HomeListVMTrigger,ImagesCardViewTrigger {
     
     func reloadOnDataReceive() {
         reloadTableData()
-//        self.homeViewModel?.arrFilteredAuthorList = self.homeViewModel?.arrAuthorList ?? []
-//        reloadCollection()
     }
     
 }

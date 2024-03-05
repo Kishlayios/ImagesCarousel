@@ -11,7 +11,7 @@ import CoreData
 class DatabaseManager: NSObject {
     
     // MARK: - Variables
-    //var arrBaseData = [CountryList]()
+    var arrBaseData = [AuthorBooks]()
     var persistentContainer: NSPersistentContainer!
     static let sharedInstance: DatabaseManager = {
         let instance = DatabaseManager()
@@ -34,40 +34,43 @@ class DatabaseManager: NSObject {
     }
     
 //    // MARK: Function to Add data To Core data Database
-//    
-//    func addBaseCurrencyDataToLocalStorage(country: String, rate: String) {
-//        let context = persistentContainer.viewContext
-//        let data = CountryList(context: context)
-//        data.baseCurrency = "USD"
-//        data.country = country
-//        data.rate = NSDecimalNumber(string: rate)
-//        saveContext()
-//    }
-//    
-//    func loadBaseCurrencyData() -> [CountryList] {
-//        let context = persistentContainer.viewContext
-//        let request: NSFetchRequest<CountryList> = CountryList.fetchRequest()
-//        do {
-//            arrBaseData = try context.fetch(request)
-//        } catch {
-//            print("Error Loading Items \(error)")
-//        }
-//        return arrBaseData
-//    }
-//    
-//    func deleteEntityData() {
-//        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CountryList")
-//        let deleteReq = NSBatchDeleteRequest(fetchRequest: fetchRequest)
-//        let context = persistentContainer.viewContext
-//        
-//        do {
-//            try context.execute(deleteReq)
-//        } catch let error as NSError {
-//            // TODO: handle the error
-//            print(error.localizedDescription)
-//        }
-//        saveContext()
-//    }
+   
+    func addAuthorDataToLocalStorage(data: HomeDataListModel) {
+        let context = persistentContainer.viewContext
+        let tableObj = AuthorBooks(context: context)
+        tableObj.id = data.id
+        tableObj.author = data.author
+        tableObj.height = Int64(data.height ?? 0)
+        tableObj.width = Int64(data.width ?? 0)
+        tableObj.downloadURL = data.downloadURL
+        tableObj.url = data.url
+        saveContext()
+    }
+    
+    func loadAuthorLocalData() -> [AuthorBooks] {
+        let context = persistentContainer.viewContext
+        let request: NSFetchRequest<AuthorBooks> = AuthorBooks.fetchRequest()
+        do {
+            arrBaseData = try context.fetch(request)
+        } catch {
+            print("Error Loading Items \(error)")
+        }
+        return arrBaseData
+    }
+    
+    func deleteEntityData() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "AuthorBooks")
+        let deleteReq = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        let context = persistentContainer.viewContext
+        
+        do {
+            try context.execute(deleteReq)
+        } catch let error as NSError {
+            // TODO: handle the error
+            print(error.localizedDescription)
+        }
+        saveContext()
+    }
     
     
     // MARK: - Core Data Saving support

@@ -4,9 +4,81 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="GraphikMedium.otf">
+            <string>Graphik-Medium</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="DisplayImageInList" rowHeight="73" id="cwc-1k-emH" customClass="DisplayImageInList" customModule="ImagesCarousel" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cwc-1k-emH" id="wd5-L5-Q4g">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rG0-0x-Ldq">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="60"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XME-B2-fSl">
+                                <rect key="frame" x="16" y="12" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="36" id="JRP-7n-gha"/>
+                                    <constraint firstAttribute="width" secondItem="XME-B2-fSl" secondAttribute="height" multiplier="1:1" id="cEr-Q8-Se8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Author - Nadir B" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqG-QV-ffl">
+                                <rect key="frame" x="59.999999999999993" y="16" width="91.333333333333314" height="12"/>
+                                <fontDescription key="fontDescription" name="Graphik-Medium" family="Graphik" pointSize="12"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Dimension - 36 * 46" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kik-x9-O8x">
+                                <rect key="frame" x="59.999999999999993" y="30" width="83.333333333333314" height="10"/>
+                                <fontDescription key="fontDescription" name="STIXTwoMath-Regular" family="STIX Two Math" pointSize="10"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="WqG-QV-ffl" secondAttribute="trailing" constant="16" id="2Ft-d1-08C"/>
+                            <constraint firstItem="XME-B2-fSl" firstAttribute="top" secondItem="rG0-0x-Ldq" secondAttribute="top" constant="12" id="9Te-8W-gEs"/>
+                            <constraint firstAttribute="bottom" secondItem="XME-B2-fSl" secondAttribute="bottom" constant="12" id="9dt-nt-92T"/>
+                            <constraint firstItem="Kik-x9-O8x" firstAttribute="top" secondItem="WqG-QV-ffl" secondAttribute="bottom" constant="2" id="BdO-yK-O2S"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Kik-x9-O8x" secondAttribute="bottom" constant="4" id="EIT-ay-1xe"/>
+                            <constraint firstItem="WqG-QV-ffl" firstAttribute="top" secondItem="XME-B2-fSl" secondAttribute="top" constant="4" id="M8x-nv-0p8"/>
+                            <constraint firstItem="Kik-x9-O8x" firstAttribute="leading" secondItem="WqG-QV-ffl" secondAttribute="leading" id="Wjc-Hv-iPW"/>
+                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Kik-x9-O8x" secondAttribute="trailing" constant="16" id="ZF1-wz-ZeE"/>
+                            <constraint firstItem="WqG-QV-ffl" firstAttribute="leading" secondItem="XME-B2-fSl" secondAttribute="trailing" constant="8" id="fTh-hx-8fY"/>
+                            <constraint firstItem="XME-B2-fSl" firstAttribute="leading" secondItem="rG0-0x-Ldq" secondAttribute="leading" constant="16" id="oL8-SC-cce"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="rG0-0x-Ldq" firstAttribute="leading" secondItem="wd5-L5-Q4g" secondAttribute="leading" id="H7d-mQ-0PM"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="rG0-0x-Ldq" secondAttribute="bottom" id="hhM-BN-Nvc"/>
+                    <constraint firstItem="rG0-0x-Ldq" firstAttribute="top" secondItem="wd5-L5-Q4g" secondAttribute="top" id="la2-aQ-zQk"/>
+                    <constraint firstAttribute="trailing" secondItem="rG0-0x-Ldq" secondAttribute="trailing" id="moD-vU-hMg"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="backview" destination="rG0-0x-Ldq" id="gdg-Lx-Aka"/>
+                <outlet property="imgDisplay" destination="XME-B2-fSl" id="ldE-9e-W1f"/>
+                <outlet property="lblAuthor" destination="WqG-QV-ffl" id="WSx-CK-dyT"/>
+                <outlet property="lblDimensions" destination="Kik-x9-O8x" id="TW2-ej-0Ge"/>
+            </connections>
+            <point key="canvasLocation" x="-327.48091603053433" y="-52.464788732394368"/>
+        </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

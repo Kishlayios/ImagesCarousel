@@ -15,10 +15,12 @@ class TableFirstSectionCell: UITableViewCell {
     
     // MARK: - Outlets
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var pageControl: UIPageControl!
 
     // MARK: - Variables
-    var groupCardDelegate: ImagesCardViewTrigger?
-    
+    weak var delegate: ImagesCardViewTrigger?
+    var currentIndex = 0
+    var arrImageList = [HomeDataListModel]()
     
     // MARK: - View Life cycle
     override func awakeFromNib() {
@@ -39,26 +41,47 @@ class TableFirstSectionCell: UITableViewCell {
         self.collectionView.dataSource = self
         self.collectionView.register(UINib(nibName: "ImageCollectionCell", bundle: nil), forCellWithReuseIdentifier: "ImageCollectionCell")
     }
+    
+    func reloadInnerSetup(data: [HomeDataListModel]) {
+        self.arrImageList = data
+        self.collectionView.reloadData()
+    }
 
 }
 
 // MARK: - collection View DataSource Methods
 extension TableFirstSectionCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoArr.count
+        return arrImageList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCollectionCell", for: indexPath) as! ImageCollectionCell
-        cell.setupTheImage(data: photoArr[indexPath.row],name: lblGroupNames[indexPath.row])
+        cell.setupData(data: arrImageList[indexPath.item])
         return cell
     }
 }
 
 // MARK: - Collection View Delegate Methods
 extension TableFirstSectionCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+            self.pageControl.currentPage = indexPath.item
+            currentIndex = indexPath.item
+        }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        var visibleRect = CGRect()
+        visibleRect.origin = collectionView.contentOffset
+        visibleRect.size = collectionView.bounds.size
+        let visiblePoint = CGPoint(x: visibleRect.midX, y: visibleRect.midY)
+        guard let indexPath = collectionView.indexPathForItem(at: visiblePoint) else { return }
+        
+        self.pageControl.currentPage = indexPath.item
+        currentIndex = indexPath.item
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.groupCardDelegate?.particularCardTapped(data: [:])
+        //code
     }
 }
 

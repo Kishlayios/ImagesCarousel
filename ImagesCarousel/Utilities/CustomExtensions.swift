@@ -64,7 +64,6 @@ extension UIViewController {
         let btn1 = UIButton(type: .custom)
         let imgSearch = UIImage(named: "ic_Search")
         btn1.setImage(imgSearch, for: .normal)
-        btn1.imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
         btn1.imageView?.contentMode = .scaleAspectFit
         btn1.frame = CGRect(x: 0, y: 0, width: 36, height: 36)
         btn1.addTarget(self, action: #selector(self.btnSearchTapAction(sender:)), for: .touchUpInside)

@@ -12,7 +12,7 @@
         <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="TableFirstSectionCell" rowHeight="206" id="kc1-fR-Kgg" customClass="TableFirstSectionCell" customModule="ImagesCarousel" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="393" height="206"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kc1-fR-Kgg" id="jkf-8s-IgN">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kc1-fR-Kgg" id="jkf-8s-IgN">
                 <rect key="frame" x="0.0" y="0.0" width="393" height="206"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -30,17 +30,26 @@
                         </collectionViewFlowLayout>
                         <cells/>
                     </collectionView>
+                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="p9H-NU-jO8">
+                        <rect key="frame" x="16" y="180" width="361" height="26"/>
+                        <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="currentPageIndicatorTintColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </pageControl>
                 </subviews>
                 <constraints>
                     <constraint firstItem="JD8-8B-jnW" firstAttribute="top" secondItem="jkf-8s-IgN" secondAttribute="top" id="JvA-dy-F1W"/>
+                    <constraint firstAttribute="trailing" secondItem="p9H-NU-jO8" secondAttribute="trailing" constant="16" id="Rbi-cj-skc"/>
                     <constraint firstAttribute="trailing" secondItem="JD8-8B-jnW" secondAttribute="trailing" id="bVa-9d-xXe"/>
-                    <constraint firstAttribute="bottom" secondItem="JD8-8B-jnW" secondAttribute="bottom" id="nLq-yB-7WR"/>
+                    <constraint firstItem="p9H-NU-jO8" firstAttribute="leading" secondItem="jkf-8s-IgN" secondAttribute="leading" constant="16" id="cd6-ZP-dda"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="p9H-NU-jO8" secondAttribute="bottom" id="kXH-vG-fAk"/>
                     <constraint firstItem="JD8-8B-jnW" firstAttribute="leading" secondItem="jkf-8s-IgN" secondAttribute="leading" id="o2e-9R-P6r"/>
+                    <constraint firstItem="p9H-NU-jO8" firstAttribute="top" secondItem="JD8-8B-jnW" secondAttribute="bottom" id="ohQ-Ax-vsN"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="collectionView" destination="JD8-8B-jnW" id="6Ia-z2-lhB"/>
+                <outlet property="pageControl" destination="p9H-NU-jO8" id="dhh-qu-7LP"/>
             </connections>
             <point key="canvasLocation" x="-61.832061068702288" y="-56.338028169014088"/>
         </tableViewCell>

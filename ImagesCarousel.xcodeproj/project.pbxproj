@@ -652,7 +652,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A84SKZTH9Z;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ImagesCarousel/Info.plist;
+				INFOPLIST_FILE = ImagesCarousel/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
@@ -682,7 +682,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = A84SKZTH9Z;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ImagesCarousel/Info.plist;
+				INFOPLIST_FILE = ImagesCarousel/Resources/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.photography";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;

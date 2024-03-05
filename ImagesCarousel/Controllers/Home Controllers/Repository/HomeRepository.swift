@@ -17,7 +17,7 @@ class HomeRepository: HomeListDelegates {
         let url = "v2/list"
         var queryParam = [String:String]()
         queryParam["page"] = "\(pageNo)"
-        queryParam["limit"] = "\(26)"
+        queryParam["limit"] = "\(100)"
         
         ServiceManager.shared.callGetService(urlStr: url,queryParams: queryParam) { response in
             completionHandler(ResponseData(error: nil, response: response))
